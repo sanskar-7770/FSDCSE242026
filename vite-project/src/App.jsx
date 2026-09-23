@@ -5,17 +5,21 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 import Icard from './components/Icard'
 import Icardgallery from './components/Icardgallery'
+import MyState from './components/mystate'
+
+import SetName from './components/SetName'
+import ColorChange from './components/Colorchange'
+import ImageManipulation from './components/ImageManipulation'
 function App() {
   
 
   return (
-    <>
-    <div >
-      <Icardgallery/>
-    </div>
+      <ImageManipulation/>
+   
       
-    </>
+   
   )
 }
+
 
 export default App
