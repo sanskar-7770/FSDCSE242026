@@ -1,39 +1,80 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import cat from "../assets/cat.jpg"
- function ImageManipulation() {
-    const [catHeight,setCatHeight]=useState(200);
-    const [catWidth,setCatWidth]=useState(200);
-    const [red,setRed]=useState(0);
-    const [green,setGreen]=useState(0);
-    const [blue,setBlue]=useState(0);
-    function increaseHeight(){
-        setCatHeight(catHeight+20);
-    }
-    function increaseWidth(){
-        setCatWidth(catWidth+20);
-    }
-    
-    function changebgcolor(){
-        setRed(Math.random()*255);
-        setBlue(Math.random()*255);
-        setGreen(Math.random()*255);
+
+function ImageManipulation() {
+
+    const [catHeight, setCatHeight] = useState(200);
+    const [catWidth, setCatWidth] = useState(200);
+
+    const [red, setRed] = useState(0);
+    const [green, setGreen] = useState(0);
+    const [blue, setBlue] = useState(0);
+
+    // Rotation state
+    const [rotate, setRotate] = useState(0);
+
+    function increaseHeight() {
+        setCatHeight(catHeight + 20);
     }
 
-    
-  return (
-    <div>
-        <h2>ImageManupulation</h2>
-        <div style={{background:`rgb(${red},${green},${blue})`,height:'400px',width:'400px',border:'4px solid red',marginLeft:'10px',marginRight:'10px'}}>
-            <img src={cat} height={catHeight} width={catWidth}/>
-        </div>
+    function increaseWidth() {
+        setCatWidth(catWidth + 20);
+    }
 
+    function changebgcolor() {
+        setRed(Math.random() * 255);
+        setBlue(Math.random() * 255);
+        setGreen(Math.random() * 255);
+    }
+
+    function rotateImage() {
+        setRotate(rotate + 90);
+    }
+
+    return (
         <div>
-            <button onClick={increaseWidth}>Increase Width</button>
-            <button onClick={increaseHeight}>Increase height</button>
-            <button onClick={changebgcolor}>Change Color</button>
+            <h2>ImageManipulation</h2>
+
+            <div
+                style={{
+                    background: `rgb(${red},${green},${blue})`,
+                    height: '400px',
+                    width: '400px',
+                    border: '4px solid red',
+                    marginLeft: '10px',
+                    marginRight: '10px'
+                }}
+            >
+                <img
+                    src={cat}
+                    height={catHeight}
+                    width={catWidth}
+                    style={{
+                        transform: `rotate(${rotate}deg)`
+                    }}
+                />
+            </div>
+
+            <div>
+                <button onClick={increaseWidth}>
+                    Increase Width
+                </button>
+
+                <button onClick={increaseHeight}>
+                    Increase Height
+                </button>
+
+                <button onClick={changebgcolor}>
+                    Change Color
+                </button>
+
+                <button onClick={rotateImage}>
+                    Rotate Image
+                </button>
+            </div>
+
         </div>
-        
-    </div>
-  );
+    );
 }
+
 export default ImageManipulation;
